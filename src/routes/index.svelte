@@ -14,7 +14,6 @@
 	let isActive = true;
 	let isDeveloper = true;
 
-
 	const customAnimateFunction = () => {
 		return {
 			css: (t) => {
@@ -27,65 +26,65 @@
 		};
 	};
 
-  function drag(node) {
-    let x;
-    let y;
+	function drag(node) {
+		let x;
+		let y;
 
-    const coords = spring({
-      x: 0,
-      y: 0
-    });
+		const coords = spring({
+			x: 0,
+			y: 0
+		});
 
-    coords.subscribe(current => {
-      node.style.transform = `translate3d(${current.x}px, ${current.y}px, 0)`;
-    });
+		coords.subscribe((current) => {
+			node.style.transform = `translate3d(${current.x}px, ${current.y}px, 0)`;
+		});
 
-    node.addEventListener("mousedown", mousedown);
+		node.addEventListener('mousedown', mousedown);
 
-    function mousedown(event) {
-      x = event.clientX;
-      y = event.clientY;
+		function mousedown(event) {
+			x = event.clientX;
+			y = event.clientY;
 
-      window.addEventListener("mouseup", mouseup);
-      window.addEventListener("mousemove", mousemove);
-    }
+			window.addEventListener('mouseup', mouseup);
+			window.addEventListener('mousemove', mousemove);
+		}
 
-    function mouseup() {
-      window.removeEventListener("mouseup", mouseup);
-      window.removeEventListener("mousemove", mousemove);
+		function mouseup() {
+			window.removeEventListener('mouseup', mouseup);
+			window.removeEventListener('mousemove', mousemove);
 
-      coords.update(() => {
-        return { x: 0, y: 0 };
-      });
+			coords.update(() => {
+				return { x: 0, y: 0 };
+			});
 
-      node.dispatchEvent(
-        new CustomEvent("dragstop", {
-          detail: { x, y }
-        })
-      );
+			node.dispatchEvent(
+				new CustomEvent('dragstop', {
+					detail: { x, y }
+				})
+			);
 
-      x = 0;
-      y = 0;
-    }
+			x = 0;
+			y = 0;
+		}
 
-    function mousemove(event) {
-      const dx = event.clientX - x;
-      const dy = event.clientY - y;
+		function mousemove(event) {
+			const dx = event.clientX - x;
+			const dy = event.clientY - y;
 
-      x = event.clientX;
-      y = event.clientY;
+			x = event.clientX;
+			y = event.clientY;
 
-      coords.update(current => {
-        return {
-          x: current.x + dx,
-          y: current.y + dy
-        };
-      });
-    }
-  }
+			coords.update((current) => {
+				return {
+					x: current.x + dx,
+					y: current.y + dy
+				};
+			});
+		}
+	}
 </script>
 
-<!-- this can be added to any node to apply this function --> 
+<!-- this can be added to any node to apply this function -->
 <!-- on:dragstop={event => {
 	if (event.detail.x > 300) {
 		isActive = false;
@@ -95,27 +94,43 @@
 <body class="selection:opacity-0">
 	<main class="container mx-auto my-6 flex place-content-center selection:none">
 		<div class="flex flex-col place-items-center">
-			<h1 use:drag class="font-shrikhard text-prettyBig text-offWhite text-center cursor-grabbing">PJ Jones</h1>
+			<h1 use:drag class="font-shrikhard text-prettyBig text-offWhite text-center cursor-grabbing">
+				PJ Jones
+			</h1>
 			<div 
 				use:drag 
-				on:click={() => (isDeveloper = !isDeveloper)}
-				transition:customAnimateFunction
-				class="cursor-grabbing">
-			<div class="relative bg-offWhite h-36 w-[600px] rounded-lg">
-				<h2 class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center">
-					{#if isDeveloper}Developer{:else}Designer{/if}
-				</h2>
-				<h2 
-					 class="absolute top-2 font-bebas text-veryBig text-coral text-center">{#if isDeveloper}Developer{:else}Designer{/if}</h2>
-			</div>
+				on:click={() => (isDeveloper = !isDeveloper)} 
+				class="cursor-grabbing"				
+				>
+				<div class="relative bg-offWhite h-36 w-[600px] rounded-lg">
+					{#if isDeveloper}
+					<h2
+						transition:scale 
+						class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center">
+						Developer
+					</h2>
+					<h2 
+						transition:scale
+						class="absolute top-2 font-bebas text-veryBig text-coral text-center">
+						Developer
+					</h2>
+					{:else}
+					<h2
+						transition:scale
+						class="absolute top-5 left-10 font-bebas text-veryBig text-dblue text-center">
+						Designer
+					</h2>
+					<h2 
+						transition:scale
+						class="absolute top-2 left-8 font-bebas text-veryBig text-coral text-center">
+						Designer
+					</h2>
+					{/if}
+				</div>
 			</div>
 			<div class="m-4 h-[160px]">
 				{#if isActive}
-					<div 
-						class="cursor-grabbing" 
-						transition:customAnimateFunction 
-						use:drag 
-						>
+					<div class="cursor-grabbing" transition:customAnimateFunction use:drag>
 						<Icon name="tomato" width="10rem" />
 					</div>
 				{/if}
