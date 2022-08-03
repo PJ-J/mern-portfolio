@@ -26,6 +26,7 @@ const config = {
 				'offWhite': '#E7E1C5',
 				'coral': '#F57B7B',
 				'dblue': '#242E63',
+				'brightgreen': '#06DD8F',
 			},
 			fontFamily: {
 				'shrikhard': ['"Shrikhand"', 'cursive'],
