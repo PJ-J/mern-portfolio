@@ -105,23 +105,23 @@
 				<div class="relative bg-offWhite h-36 w-[600px] rounded-lg">
 					{#if isDeveloper}
 					<h2
-						transition:scale 
+						transition:scale={{ duration: 800 }}
 						class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center">
 						Developer
 					</h2>
 					<h2 
-						transition:scale
+						transition:scale={{ duration: 500 }}
 						class="absolute top-2 font-bebas text-veryBig text-coral text-center">
 						Developer
 					</h2>
 					{:else}
 					<h2
-						transition:scale
+						transition:scale={{ duration: 800 }}
 						class="absolute top-5 left-10 font-bebas text-veryBig text-dblue text-center">
 						Designer
 					</h2>
 					<h2 
-						transition:scale
+						transition:scale={{ duration: 500 }}
 						class="absolute top-2 left-8 font-bebas text-veryBig text-coral text-center">
 						Designer
 					</h2>
