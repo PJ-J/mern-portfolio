@@ -12,6 +12,8 @@
 	} from 'svelte/easing';
 	import { spring } from 'svelte/motion';
 	let isActive = true;
+	let isDeveloper = true;
+
 
 	const customAnimateFunction = () => {
 		return {
@@ -94,12 +96,17 @@
 	<main class="container mx-auto my-6 flex place-content-center selection:none">
 		<div class="flex flex-col place-items-center">
 			<h1 use:drag class="font-shrikhard text-prettyBig text-offWhite text-center cursor-grabbing">PJ Jones</h1>
-			<div use:drag class="cursor-grabbing">
+			<div 
+				use:drag 
+				on:click={() => (isDeveloper = !isDeveloper)}
+				transition:customAnimateFunction
+				class="cursor-grabbing">
 			<div class="relative bg-offWhite h-36 w-[600px] rounded-lg">
 				<h2 class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center">
-					Developer
+					{#if isDeveloper}Developer{:else}Designer{/if}
 				</h2>
-				<h2 class="absolute top-2 font-bebas text-veryBig text-coral text-center">Developer</h2>
+				<h2 
+					 class="absolute top-2 font-bebas text-veryBig text-coral text-center">{#if isDeveloper}Developer{:else}Designer{/if}</h2>
 			</div>
 			</div>
 			<div class="m-4 h-[160px]">
