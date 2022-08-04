@@ -131,7 +131,7 @@
 			<div class="m-4 h-[160px]">
 				{#if isActive}
 					<div class="cursor-grabbing" transition:customAnimateFunction use:drag>
-						<Icon name="tomato" width="10rem" />
+						<Icon name="tomato" width="165px" />
 					</div>
 				{/if}
 			</div>
@@ -139,7 +139,7 @@
 				>{#if isActive}Hide Tomato{:else}Show Tomato{/if}</button
 			>
 			<div class="absolute neon -z-10">
-				<Icon name="leaf1" height="60rem" class="" />
+				<Icon name="leaf1" height="960px" class="" />
 			</div>
 			<!-- <div class="neon">
 			</div> -->
