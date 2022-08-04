@@ -130,7 +130,7 @@
 			</div>
 			<div class="m-4 h-[160px]">
 				{#if isActive}
-					<div class="cursor-grabbing" transition:customAnimateFunction use:drag>
+					<div class="cursor-grabbing" transition:scale={{ easing:bounceOut, duration:1000, opacity:1 }} use:drag>
 						<Icon name="tomato" width="165px" />
 					</div>
 				{/if}
