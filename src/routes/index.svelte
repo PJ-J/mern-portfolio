@@ -97,40 +97,44 @@
 			<h1 use:drag class="font-shrikhard text-prettyBig text-offWhite text-center cursor-grabbing">
 				PJ Jones
 			</h1>
-			<div 
-				use:drag 
-				on:click={() => (isDeveloper = !isDeveloper)} 
-				class="cursor-grabbing"				
-				>
+			<div use:drag on:click={() => (isDeveloper = !isDeveloper)} class="cursor-grabbing">
 				<div class="relative bg-offWhite h-36 w-[600px] rounded-lg">
 					{#if isDeveloper}
-					<h2
-						transition:scale={{ duration: 800 }}
-						class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center">
-						Developer
-					</h2>
-					<h2 
-						transition:scale={{ duration: 500 }}
-						class="absolute top-2 font-bebas text-veryBig text-coral text-center">
-						Developer
-					</h2>
+						<h2
+							transition:scale={{ duration: 800 }}
+							class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center"
+						>
+							Developer
+						</h2>
+						<h2
+							transition:scale={{ duration: 500 }}
+							class="absolute top-2 font-bebas text-veryBig text-coral text-center"
+						>
+							Developer
+						</h2>
 					{:else}
-					<h2
-						transition:scale={{ duration: 800 }}
-						class="absolute top-5 left-10 font-bebas text-veryBig text-dblue text-center">
-						Designer
-					</h2>
-					<h2 
-						transition:scale={{ duration: 500 }}
-						class="absolute top-2 left-8 font-bebas text-veryBig text-coral text-center">
-						Designer
-					</h2>
+						<h2
+							transition:scale={{ duration: 800 }}
+							class="absolute top-5 left-10 font-bebas text-veryBig text-dblue text-center"
+						>
+							Designer
+						</h2>
+						<h2
+							transition:scale={{ duration: 500 }}
+							class="absolute top-2 left-8 font-bebas text-veryBig text-coral text-center"
+						>
+							Designer
+						</h2>
 					{/if}
 				</div>
 			</div>
 			<div class="m-4 h-[160px]">
 				{#if isActive}
-					<div class="cursor-grabbing" transition:scale={{ easing:bounceOut, duration:1000, opacity:1 }} use:drag>
+					<div
+						class="cursor-grabbing"
+						transition:scale={{ easing: bounceOut, duration: 1000, opacity: 1 }}
+						use:drag
+					>
 						<Icon name="tomato" width="165px" />
 					</div>
 				{/if}
@@ -141,8 +145,17 @@
 			<div class="absolute neon -z-10">
 				<Icon name="leaf1" height="960px" class="" />
 			</div>
-			<!-- <div class="neon">
-			</div> -->
+			<div class="relative">
+				<div class="blink2">
+					<Icon name="tomatoOutline" height="300px" class="absolute right-[-100px]" />
+				</div>
+				<div class="blink">
+					<Icon name="tomatoOutline" height="300px" class="absolute right-[100px]" />
+				</div>
+				<div class="blink3">
+					<Icon name="tomatoOutline" height="300px" class="absolute left-0" />
+				</div>
+			</div>
 		</div>
 	</main>
 </body>
@@ -155,6 +168,7 @@
 		--neon-text-color: #f57b7b;
 		--neon-border-color: #06dd8f;
 		--off-white: #e7e1c5;
+		--neon-off-red: #371f1f;
 	}
 
 	button {
@@ -184,6 +198,22 @@
 	.neon {
 		filter: drop-shadow(0 0 5px var(--neon-border-color));
 		animation: flickerSvg 5s infinite alternate;
+	}
+
+	.blink {
+		/* filter: drop-shadow(0 0 5px var(--neon-border-color)); */
+		animation: blink 3s infinite;
+	}
+	.blink2 {
+		
+		/* filter: drop-shadow(0 0 5px var(--neon-border-color)); */
+		animation: blink 3s infinite;
+		animation-delay: .6s;
+	}
+	.blink3 {
+		/* filter: drop-shadow(0 0 5px var(--neon-border-color)); */
+		animation: blink 3s infinite;
+		animation-delay: 1.2s;
 	}
 
 	/* Animate neon flicker */
@@ -230,6 +260,22 @@
 		24%,
 		55% {
 			filter: drop-shadow(0 0 0 var(--neon-border-color));
+		}
+	}
+
+	@keyframes blink {
+		0%,
+		30%,
+		100% {
+			filter: invert(0%) sepia(83%) saturate(7432%) hue-rotate(209deg) brightness(0%) contrast(115%);
+			opacity: 0;
+		}
+
+		25% {
+			filter: drop-shadow(0 0 5px var(--neon-text-color));
+			opacity: 1;
+
+			/* color: var(--neon-text-color); */
 		}
 	}
 </style>
