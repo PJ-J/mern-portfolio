@@ -146,11 +146,11 @@
 				<Icon name="leaf1" height="960px" class="" />
 			</div>
 			<div class="relative">
-				<div class="blink2">
-					<Icon name="tomatoOutline" height="300px" class="absolute right-[-100px]" />
-				</div>
 				<div class="blink">
 					<Icon name="tomatoOutline" height="300px" class="absolute right-[100px]" />
+				</div>
+				<div class="blink2">
+					<Icon name="tomatoOutline" height="300px" class="absolute right-[-100px] rotate-180 top-12" />
 				</div>
 				<div class="blink3">
 					<Icon name="tomatoOutline" height="300px" class="absolute left-0" />
@@ -208,13 +208,13 @@
 		opacity: 0;
 		/* filter: drop-shadow(0 0 5px var(--neon-border-color)); */
 		animation: blink 3s infinite;
-		animation-delay: .6s;
+		animation-delay: .4s;
 	}
 	.blink3 {
 		opacity: 0;
 		/* filter: drop-shadow(0 0 5px var(--neon-border-color)); */
 		animation: blink 3s infinite;
-		animation-delay: 1.2s;
+		animation-delay: .8s;
 	}
 
 	/* Animate neon flicker */
@@ -266,6 +266,7 @@
 
 	@keyframes blink {
 		0%,
+		10%,
 		30%,
 		100% {
 			/* filter: invert(0%) sepia(83%) saturate(7432%) hue-rotate(209deg) brightness(0%) contrast(115%); */
