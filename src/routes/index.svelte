@@ -205,12 +205,13 @@
 		animation: blink 3s infinite;
 	}
 	.blink2 {
-		
+		opacity: 0;
 		/* filter: drop-shadow(0 0 5px var(--neon-border-color)); */
 		animation: blink 3s infinite;
 		animation-delay: .6s;
 	}
 	.blink3 {
+		opacity: 0;
 		/* filter: drop-shadow(0 0 5px var(--neon-border-color)); */
 		animation: blink 3s infinite;
 		animation-delay: 1.2s;
