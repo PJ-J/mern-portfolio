@@ -268,7 +268,7 @@
 		0%,
 		30%,
 		100% {
-			filter: invert(0%) sepia(83%) saturate(7432%) hue-rotate(209deg) brightness(0%) contrast(115%);
+			/* filter: invert(0%) sepia(83%) saturate(7432%) hue-rotate(209deg) brightness(0%) contrast(115%); */
 			opacity: 0;
 		}
 
