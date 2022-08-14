@@ -10,7 +10,7 @@
 
 <div class="header-wrapper">
 	<header style="--state:{state}">
-		<div class="background" />
+		<div class="background -z-20" />
 		<div style="text-align: center">
 			<h1 class="title font-bebas text-offWhite" id="start">PJ Jones</h1>
 			<h2 class="subtitle font-bebas text-offWhite">I do stuff</h2>

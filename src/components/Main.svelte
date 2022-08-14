@@ -139,7 +139,7 @@
 					</div>
 				{/if}
 			</div>
-			<button on:click={() => (isActive = !isActive)} class="font-shrikhard"
+			<button on:click={() => (isActive = !isActive)} class="font-shrikhard z-10"
 				>{#if isActive}Hide Tomato{:else}Show Tomato{/if}</button
 			>
 			<div class="absolute neon -z-10">
