@@ -2,7 +2,9 @@
 	import Icon from '../components/Icon.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import Header from '../components/Header.svelte';
+	import Section from '../components/Section.svelte';
 	import { fade, blur, slide, scale, fly, draw } from 'svelte/transition';
+	import * as animateScroll from "svelte-scrollto";
 	import {
 		bounceIn,
 		bounceOut,
@@ -85,13 +87,28 @@
 			});
 		}
 	}
-</script>
+	</script>
 
 <svelte:window bind:scrollY={scrollY} bind:innerHeight={windowHeight} />
 <svelte:body style="--loader-opacity:{showLoader ? 1 : 0}" class="a" />
 
 <body>
 	<Header state={1 - (scrollY/(600))} />
+	<div class="content">
+	<Section key="about" title="about" >
+		Hi, I'm PJ.<br>
+		I have experience in Javascript, and I'm currently learning Java.      
+	</Section>
+	<Section key="skills" title="skills"  >
+		what can I do?
+		</Section>
+	<Section key="projects" title="projects"  >
+		Projects
+		</Section>
+	<Section key="contact" title="contact"  >
+		Contact
+		</Section>
+	</div>
 	<main class="container mx-auto my-6 flex place-content-center selection:none">
 		<div class="flex flex-col place-items-center">
 			<h1 use:drag class="font-shrikhard text-prettyBig text-offWhite text-center cursor-grabbing">
@@ -100,69 +117,69 @@
 			<div use:drag on:click={() => (isDeveloper = !isDeveloper)} class="cursor-grabbing">
 				<div class="relative bg-offWhite h-36 w-[600px] rounded-lg">
 					{#if isDeveloper}
-						<h2
-							transition:scale={{ duration: 800 }}
-							class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center"
-						>
-							Developer
-						</h2>
-						<h2
-							transition:scale={{ duration: 500 }}
-							class="absolute top-2 font-bebas text-veryBig text-coral text-center"
-						>
-							Developer
-						</h2>
-					{:else}
-						<h2
-							transition:scale={{ duration: 800 }}
-							class="absolute top-5 left-10 font-bebas text-veryBig text-dblue text-center"
-						>
-							Designer
-						</h2>
-						<h2
-							transition:scale={{ duration: 500 }}
-							class="absolute top-2 left-8 font-bebas text-veryBig text-coral text-center"
-						>
-							Designer
-						</h2>
-					{/if}
-				</div>
-			</div>
-			<div class="m-4 h-[160px]">
-				{#if isActive}
-					<div
-						class="cursor-grabbing"
-						transition:scale={{ easing: bounceOut, duration: 1000, opacity: 1 }}
-						use:drag
+					<h2
+					transition:scale={{ duration: 800 }}
+					class="absolute top-5 left-2 font-bebas text-veryBig text-dblue text-center"
 					>
-						<Icon name="tomato" width="165px" />
-					</div>
-				{/if}
-			</div>
-			<button on:click={() => (isActive = !isActive)} class="font-shrikhard z-10"
-				>{#if isActive}Hide Tomato{:else}Show Tomato{/if}</button
+					Developer
+				</h2>
+				<h2
+				transition:scale={{ duration: 500 }}
+				class="absolute top-2 font-bebas text-veryBig text-coral text-center"
+				>
+				Developer
+			</h2>
+			{:else}
+			<h2
+			transition:scale={{ duration: 800 }}
+			class="absolute top-5 left-10 font-bebas text-veryBig text-dblue text-center"
 			>
-			<div class="absolute neon -z-10">
-				<Icon name="leaf1" height="960px" class="" />
-			</div>
-			<div class="relative">
-				<div class="blink">
-					<Icon name="tomatoOutline" height="300px" class="absolute right-[100px]" />
-				</div>
-				<div class="blink2">
-					<Icon
-						name="tomatoOutline"
-						height="300px"
-						class="absolute right-[-100px] rotate-180 top-12"
-					/>
-				</div>
-				<div class="blink3">
-					<Icon name="tomatoOutline" height="300px" class="absolute left-0" />
-				</div>
-			</div>
+			Designer
+		</h2>
+		<h2
+		transition:scale={{ duration: 500 }}
+		class="absolute top-2 left-8 font-bebas text-veryBig text-coral text-center"
+		>
+		Designer
+	</h2>
+	{/if}
+</div>
+</div>
+<div class="m-4 h-[160px]">
+	{#if isActive}
+	<div
+	class="cursor-grabbing"
+	transition:scale={{ easing: bounceOut, duration: 1000, opacity: 1 }}
+	use:drag
+	>
+	<Icon name="tomato" width="165px" />
+</div>
+{/if}
+</div>
+<button on:click={() => (isActive = !isActive)} class="font-shrikhard z-10"
+	>{#if isActive}Hide Tomato{:else}Show Tomato{/if}</button
+	>
+	<div class="absolute neon -z-10">
+		<Icon name="leaf1" height="960px" class="" />
+	</div>
+	<div class="relative">
+		<div class="blink">
+			<Icon name="tomatoOutline" height="300px" class="absolute right-[100px]" />
 		</div>
-		<Navbar />
-	</main>
+		<div class="blink2">
+			<Icon
+			name="tomatoOutline"
+			height="300px"
+			class="absolute right-[-100px] rotate-180 top-12"
+			/>
+		</div>
+		<div class="blink3">
+			<Icon name="tomatoOutline" height="300px" class="absolute left-0" />
+		</div>
+	</div>
+</div>
+<Navbar />
+</main>
 </body>
 
 <!-- on:dragstop={event => {
@@ -180,6 +197,10 @@
 		--off-white: #e7e1c5;
 		--neon-off-red: #371f1f;
 	}
+
+	.content {
+    padding: 0 15vw;
+  }
 
 	button {
 		font-size: 2rem;

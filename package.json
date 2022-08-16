@@ -24,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-scrollto": "^0.2.0"
+		"svelte-scrollto": "^0.2.0",
+		"svelte-scrollto-element": "^0.7.0"
 	}
 }

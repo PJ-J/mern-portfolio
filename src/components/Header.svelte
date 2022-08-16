@@ -1,5 +1,5 @@
 <script>
-	import { scrollto } from 'svelte-scrollto';
+	import { scrollto } from 'svelte-scrollto-element';
 	import { activeSection } from '../stores/store';
   import { draw } from 'svelte/transition';
 	export let state;
@@ -10,7 +10,7 @@
 
 <div class="header-wrapper">
 	<header style="--state:{state}">
-		<div class="background -z-20" />
+		<div class="background -z-60" />
 		<div style="text-align: center">
 			<h1 class="title font-bebas text-offWhite" id="start">PJ Jones</h1>
 			<h2 class="subtitle font-bebas text-offWhite">I do stuff</h2>
@@ -31,7 +31,7 @@
           </button>
         </div>
     </div>
-		<div class="scroll" use:scrollto={'#about'}>
+		<div class="scroll" use:scrollto={'#projects'}>
 			scroll down<br />
 			&darr;
 		</div>

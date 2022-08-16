@@ -123,10 +123,7 @@ export const skills = [
 ];
 
 export const navItems = [
-  {
-    text: "start",
-    key: "start"
-  },
+  
   {
     text: "about",
     key: "about"

@@ -1,8 +1,9 @@
 <script>
   import { activeSection } from "../stores/store";
   import { navItems } from "../stores/data";
-  import { scrollto } from "svelte-scrollto";
-
+  import { scrollto } from "svelte-scrollto-element";
+  import { animateScroll } from "svelte-scrollto-element";
+  
   let scrollY;
   let opacity = 0;
   //$: opacity = Math.min(Math.max(scrollY - 500, 0) / 100, 1);
@@ -75,9 +76,13 @@
 
 <svelte:window bind:scrollY={scrollY} />
 
+<!-- use:scrollto={"#" + key} -->
+
 <div class="navbar" class:transparent={!opacity}>
+  <a href="#start" on:click|preventDefault={() => animateScroll.scrollTo({element:"#start", offset:-200 })} class:active={"start" === $activeSection} >start</a>
+  <span class="separator"></span>
   {#each navItems as {text, key}, i}
-    <a href="#{key}" on:click|preventDefault={()=>{}} use:scrollto={"#" + key} class:active={key === $activeSection}>{text}</a>
+    <a href="#{key}" on:click|preventDefault={() => animateScroll.scrollTo({element:"#" + key, offset:650 })}  class:active={key === $activeSection}>{text}</a>
 
     {#if i !== navItems.length - 1}
       <span class="separator"></span>
